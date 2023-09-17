@@ -2,26 +2,112 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Satisfy&display=swap');
+
+
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 32, 91%, 8%;
+  --background-end-rgb: #000000;
+  --bg-hsl-trans: 0, 3%, 6%, 0.50
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 32, 91%, 8%;
+    --background-end-rgb: #000000;
+    --Fonst-robot: 'Croissant One', cursive;
+    --Font-satisfy: 'Satisfy', cursive;
   }
 }
 
+
+
+
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: var(--background-end-rgb);
+  background-image: url("/images/adrianna-geo-1rBg5YSi00c-unsplash.jpg");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  font-family: var(--Fonst-robot);
 }
+.message{
+  background: hsla(var(--bg-hsl-trans));
+}
+.messageP{
+  font-family: var(--Font-satisfy) ;
+}
+nav{
+  background: hsla(var(--bg-hsl-trans));
+}
+
+@keyframes fade-inout {
+  from{
+    opacity: 0;
+    
+  }
+  to{
+    opacity: 1;
+  
+  }
+}
+@keyframes move {
+  from{
+    transform: scale(0);
+    opacity: 0;
+  }
+  to{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.display{
+  position: absolute;
+  bottom: -100vh;
+  z-index: 1;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.display.activate{
+  bottom: 0;
+  animation: fade-inout 1.5s forwards;
+}
+
+.displayDiv{
+  background: hsla(var(--bg-hsl-trans));
+}
+.title{
+  grid-column: span 3;
+}
+
+
+h1.activate, p.activate{
+  animation: move 5s forwards;
+}
+
+h1:hover , p:hover{
+  color: antiquewhite;
+  cursor: pointer;
+}
+
+
+/* .iconsDiv{
+
+} */
