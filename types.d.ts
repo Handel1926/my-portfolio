@@ -15,3 +15,6 @@ type Section = {
     
     contact?: string[]
 }
+
+type monthNames = string[]
+type month = string

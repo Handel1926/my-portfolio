@@ -4,7 +4,7 @@ import {IoLogoJavascript} from 'react-icons/io';
 import {FaEye} from 'react-icons/fa'
 import {BiLogoTailwindCss, BiSolidFileCss, BiLogoReact, BiLogoTypescript} from 'react-icons/bi'
 import {TbBrandNextjs} from 'react-icons/tb'
-import { Section } from "../../types";
+import { Section, month, monthNames } from "../../types";
 import {AiFillGithub} from "react-icons/ai"
 
   const sections: Section[] = [
@@ -64,9 +64,18 @@ import {AiFillGithub} from "react-icons/ai"
   
 
 export default function Home() {
+  const  dateTime = new Date()
+  const day = dateTime.getDay();
+  const date = dateTime.getDate();
+  const monthInt = dateTime.getMonth();
+  const year = dateTime.getFullYear();
+  const months : monthNames = ["Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+  const month: month = months[monthInt]
+
+
+
   const [display, setDisplay] = useState<Section[]>();
   const [show, setShow] = useState(false)
-
   useEffect(()=>{
       setDisplay(sections)
   },[])
@@ -85,7 +94,7 @@ export default function Home() {
   
   return (
     <main className='h-screen  relative  z-20'>
-        <nav className='flex flex-col justify-center gap-1 md:flex-row md:justify-between fixed top-0 z-20 border-b border-black p-1 md:p-3 px-2 md:px-10 shadow-2xl w-full'>
+        <nav className='flex flex-col justify-center gap-1 md:flex-row md:justify-between fixed top-0 z-40 border-b border-black p-1 md:p-3 px-2 md:px-10 shadow-2xl w-full'>
           <h1 className=" text-2xl md:text-3xl text-gray-300">HANDEL1926</h1>
           <ul className='flex gap-2'>
               <li onClick={handleHover} className="p-1" title="View Background"><FaEye /></li>
@@ -97,10 +106,14 @@ export default function Home() {
               <li><a title="github Link" className=" text-2xl" href="https://github.com/Handel1926"><AiFillGithub/></a></li>
           </ul>
         </nav>
+        
       
       {display && display.map(d=>(
         
         <section id={d.title} className={`display h-full w-full pt-20 md:pt-16 px-4 pb-3 ${d.display ? "activate" : undefined}`} key={d.id} style={{backgroundImage: `url(${d.img_url})`, }}>
+          <section className="absolute top-0 right-0  z-20 text-sm  p-2 md:p-20">
+                <h1>{d.id === 1 && `${date}th ${month} ${year}`}</h1>
+          </section>
           <div className="flex flex-col overflow-scroll md:overflow-hidden md:grid md:grid-cols-5 md:p-10 h-full border-1 border-black shadow-2xl p-2 md:p10 displayDiv">
             <div className="title md:col-span-3 hover:text-2xl hover: text-white">
               <h1 className={`text-2xl p-4  ${d.display && "activate"}`}>{d.title}</h1>
