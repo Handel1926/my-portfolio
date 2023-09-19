@@ -114,7 +114,7 @@ export default function Home() {
           <section className="absolute top-0 right-0  z-20 text-sm  p-2 md:p-20">
                 <h1>{d.id === 1 && `${date}th ${month} ${year}`}</h1>
           </section>
-          <div className="flex flex-col overflow-scroll md:overflow-hidden md:grid md:grid-cols-5 md:p-10 h-full border-1 border-black shadow-2xl p-2 md:p10 displayDiv">
+          <div className="flex flex-col overflow-scroll md:overflow-hidden md:grid md:grid-cols-5 md:p-10 h-full border-1 border-black shadow-2xl p-10 md:p10 displayDiv">
             <div className="title md:col-span-3 hover:text-2xl hover: text-white">
               <h1 className={`text-2xl p-4  ${d.display && "activate"}`}>{d.title}</h1>
               <p className={`p-4  ${d.display && "activate"}`}>{d.message}</p>
